@@ -1,0 +1,1150 @@
+// class NewAcount {
+//     #userObject
+//     #user
+//     #createNewUser
+//     #newPass;
+//     #submitPass;
+//     #findUserPass;
+//     #accName;
+//     #accAccount;
+//     #accNew;
+//     #accPass;
+//     #accNewPass;
+//     constructor() {
+//         this.inputUser = document.getElementById('user_auten');
+//         this.inputPassword = document.getElementById('user_password');
+//         this.submitAccBtn = document.querySelector('.btn_form_submit');
+//         this.message = document.querySelector('.message');
+//         this.newAccUser = document.getElementById('new_acc_user');
+//         this.newUserName = document.getElementById('user_auten_name');
+//         this.formAuten = document.querySelector('.form_auten');
+//         this.btnAcc;
+//         this.passwordAcc;//New Account Password
+//         this.passwordRepeatAcc;
+//         this.newAreaAcc;
+//         this.userAcc;
+//         this.messageNew;
+//         this.type;
+//         this.#newPass = document.getElementById('new_pasword_acc');
+//         this.#submitPass;
+//         this.#findUserPass;
+//         //newPass
+//         this.#accName;
+//         this.#accAccount;
+//         this.#accNew;
+//         this.#accPass;
+//         this.#accNewPass;
+//         // this.user = user
+//         // user = this.user
+//         this._createId()
+
+//         this._getLocatStorage();
+//         this._setLocalStorage();
+//         console.log(user)
+
+//         document.addEventListener('keydown', this._refresh.bind(this))
+//         this.#newPass.addEventListener('click', this._changePassWord.bind(this))
+
+
+//     }
+
+//     _changePassWord(e) {
+//         e.preventDefault()
+
+//         this.messageNew = document.querySelector('.message')
+//         this.messageNew.style.display = 'flex'
+//         this.#findUserPass = user.find(u => this.inputUser.value === u.acc);
+
+//         if (this.#findUserPass && (this.inputPassword.value === this.#findUserPass.password)) {
+//             this._htmlNewPass()
+//             this.#accName = document.getElementById('user_name_passForm');
+//             this.#accAccount = document.getElementById('user_auten_passForm');
+//             this.#accNew = document.getElementById('user_newAcc_passForm');
+//             this.#accPass = document.getElementById('user_pass_passForm');
+//             this.#accNewPass = document.getElementById('user_passwordNew_passForm')
+//             this.messageNew = document.querySelector('.message')
+//             this.#submitPass = document.querySelector('.submit_password');
+//             this.#submitPass.addEventListener('click', this._newPassword.bind(this))
+
+//         }
+//         else {
+//             this._redMessage('Contul Nu Exista')
+//         }
+
+//     }
+
+//     _newPassword(e) {
+//         e.preventDefault();
+//         this.messageNew = document.querySelector('.message')
+//         this.messageNew.style.display = 'flex'
+
+
+
+//         if ((this.#accName.value === this.#findUserPass.name) &&
+//             (this.#accPass.value === this.#findUserPass.password) &&
+//             (this.#accAccount.value === this.#findUserPass.acc) &&
+//             (this.#accNewPass.value !== '' && this.#accNew.value !== '')) {
+
+
+//             user.forEach(u => {
+//                 if (this.#findUserPass.name === u.name) {
+
+//                     if ((this.#accNew.value !== this.#findUserPass.acc) &&
+//                         (this.#accNew.value.length >= 7) && (this.#accNew.value !== '')) {
+//                         u.acc = this.#accNew.value;
+//                         u.password = this.#findUserPass.password;
+
+//                         this._setLocalStorage();
+//                         this._initialHtmlPage();
+//                     }
+//                     else this._redMessage('Reintroduceti Datele')
+
+//                     if ((this.#newPass.value !== this.#findUserPass.password) &&
+//                         (this.#newPass.value.length >= 8) && (this.#newPass.value !== '')) {
+//                         u.password = this.#accNewPass.value;
+//                         this._setLocalStorage();
+//                         this._initialHtmlPage()
+
+//                     }
+//                     else this._redMessage('Reintroduceti Datele')
+
+//                 }
+
+//             })
+
+//         }
+//         else {
+//             this.messageNew.style.display = 'flex'
+//             this._redMessage('Introduceti Datele')
+//         }
+
+
+//     }
+//     _existingData() {
+//         let dataDuplicate = false;
+
+//         user.forEach((u, p) => {
+
+//             if ((this.newUserName.value === u.name) || (this.passwordAcc.value === u.password)
+//                 || this.userAcc.value === u.acc) {
+//                 dataDuplicate = true
+
+//             }
+
+//         })
+//         return dataDuplicate
+//     }
+
+//     _refresh(e) {
+//         if (e.key === 'Escape') {
+//             this._initialHtmlPage()
+
+//         }
+//     }
+
+//     _initialHtmlPage() {
+//         setTimeout(() => location.reload(), 1000)
+//     }
+
+//     _htmlNewPass() {
+//         this.formAuten.innerHTML = `
+
+//         <form class="form_auten">
+// <div class="form_row_auten">
+//     <label class="form_label_auten">Nume Utilizator:</label>
+//     <input type="text" id="user_name_passForm"maxlength="30" class="form_input_auten">
+// </div>
+// <div class="form_row_auten">
+//     <label class="form_label_auten">Nume Cont:</label>
+//     <input type="text" id="user_auten_passForm"maxlength="15" class="form_input_auten">
+// </div>
+// <div class="form_row_auten">
+//     <label class="form_label_auten">Cont Nou:</label>
+//     <input type="text" id="user_newAcc_passForm"maxlength="15" class="form_input_auten">
+// </div>
+// <div class="form_row_auten">
+//     <label class="form_label_auten">Parola:</label>
+//     <input type="password" id="user_pass_passForm"maxlength="15" class="form_input_auten">
+// </div>
+// <div class="form_row_auten">
+//     <label class="form_label_auten">Parola Noua:</label>
+//     <input type="password" id="user_passwordNew_passForm" maxlength="15" class="form_input_auten">
+// </div>
+// <div class="form_row_auten change_sub_btn">
+//     <input type="submit" class="btn submit_password" value="Trimite">
+//    </div>
+//    <p class="message"></p>
+//         `
+//         this.formAuten.style.height = '47rem';
+//     }
+
+
+//     // //crearea pagini Html a formului pentru crearea unui cont nou
+//     _htmlNewAccPage = function () {
+//         this.formAuten.innerHTML = `
+// <form class="form_auten">
+// <div class="form_row_auten">
+//     <label class="form_label_auten">Nume Utilizator:</label>
+//     <input type="text" id="user_auten_name"maxlength="30" class="form_input_auten">
+// </div>
+// <div class="form_row_auten">
+//     <label class="form_label_auten">Nume Cont:</label>
+//     <input type="text" id="user_auten_acc"maxlength="15" class="form_input_auten">
+// </div>
+// <div class="form_row_auten">
+//     <label class="form_label_auten">Parola:</label>
+//     <input type="password" id="user_password_acc"maxlength="15" class="form_input_auten">
+// </div>
+// <div class="form_row_auten">
+//     <label class="form_label_auten">Repetare Parola:</label>
+//     <input type="password" id="user_password_repeat" maxlength="15" class="form_input_auten">
+// </div>
+// <div class="form_row_auten form_row_change_zone">
+//     <label class="form_label_auten">Zona:</label>
+//     <input type="text"  id="user_zone_acc" maxlength="15" class="form_input_auten">
+// </div>
+// <div class="form_row_auten change_sub_btn">
+//     <input type="submit" class="btn btn_form_submit_acc btn_form_submit_admin" value="Trimite">
+
+
+// </div>
+// <div class="form_row_auten">
+// <p class="messageNewAcc"></p>
+
+// </div>
+
+
+// </form>
+
+// `
+//         this.formAuten.style.height = '47rem';
+
+
+//     }
+
+//     _initialAutenHtmlPage() {
+//         setTimeout(() => location.reload(), 300)
+//     }
+
+//     _createId() {
+//         //     //crerea Id Unic pentru fiecare Utlizator,Admin are un id care incepe cu A
+
+//         user.forEach((u, i) => {
+//             if (u.type === 'user') {
+//                 if (i <= 9) u.id = `000${i + 1}`
+//                 if (i >= 9) u.id = `00${i + 1}`
+//                 if (i >= 99) u.id = `0${i + 1}`
+//             }
+//             if (u.type === 'admin') {
+//                 if (i <= 9) u.id = `A00${i + 1}`
+//                 if (i >= 9) u.id = `A0${i + 1}`
+//                 if (i >= 99) u.id = `A${i + 1}`
+//             }
+//         }
+//         )
+//     }
+
+
+
+
+//     _createHtmlPage() {
+
+//         this.inputPassword.value = this.inputUser.value = ''
+//         this._htmlNewAccPage()
+
+
+//     }
+//     _createNewUser = function () {
+
+//         this.userObject = [
+//             {
+//                 name: this.newUserName.value,
+//                 acc: this.userAcc.value,
+//                 password: this.passwordAcc.value,
+//                 area: this.newAreaAcc.value,
+//                 type: this.type,
+//                 work: []
+
+
+
+//             }]
+
+//         user.push(...this.userObject)
+
+
+//         return this.userObject
+
+//     }
+
+
+//     //datele pe care le Implemetam La Sfarsitul Obiectului User    
+
+
+//     _timeoutMessage = function () {
+//         return setTimeout(() => this.messageNew.style.display = 'none', 2000)
+
+//     }
+
+
+//     _setLocalStorage() {
+//         localStorage.setItem('user', JSON.stringify(user))
+//     }
+//     _getLocatStorage() {
+//         const data = localStorage.getItem('user')
+//         const dataObj = JSON.parse(data)
+//         user = dataObj
+//     }
+//     restoreStorge() {
+//         localStorage.removeItem('user')
+//     }
+//     _redMessage(txt) {
+//         this.messageNew.textContent = txt
+//         this._timeoutMessage()
+//     }
+//     _submitData(e) {
+//         e.preventDefault()
+//         this.messageNew.style.display = 'flex';
+//         this.messageNew.style.width = '19rem';
+
+
+//         //A//Cand Nu se poate implementa Creearea Unui Utilizator Nou
+
+//         //Cand Parola nu este idetica cu cu Parola Repetata
+//         if (this.passwordAcc.value !== this.passwordRepeatAcc.value) this._redMessage("Repetati din nou parola")
+
+//         // Cand Nu este Completat nici un camp
+//         else if (this.newUserName.value === '' || this.userAcc.value === '' || this.passwordAcc.value === '' || this.passwordAcc.value === '' || this.passwordRepeatAcc.value === '') this._redMessage('Completati Campurile Obligatorii')
+
+//         //cand Inputurile sunt Idenctice
+//         else if (this.newUserName.value === this.userAcc.value ||
+//             this.newUserName.value === this.passwordAcc.value || this.userAcc.value === this.passwordAcc.value) this._redMessage('Folositi Alte Date De Logare')
+
+//         //cand length este mai mic de 6 pentru imputuri
+//         else if (this.passwordAcc.value.length < 8 || this.passwordRepeatAcc.length < 8)
+//             this._redMessage('Parola Trebuie Sa Aiba Cel Putin 8 Caractere')
+
+//         //Cand datele introduse exista deja
+//         else if (this._existingData()) this._redMessage("Utilizatorul Exsita Deja")
+
+
+
+
+
+//         //B//Cand Se poate implementa Crearea unui Cont Nou
+//         else {
+//             this._redMessage('')
+//             //crearea Unui utilizator nou
+//             this._createNewUser()
+//             //crearea id pentru Utilizatorul Repectiv
+
+//             this._createId()
+//             //stocarea in local storage a datelor
+//             this._setLocalStorage()
+//             //Revenirea la pagina initiala
+//             this._initialAutenHtmlPage()
+
+//         }
+
+
+
+//     }
+
+
+
+
+// }
+
+
+// class User extends NewAcount {
+
+//     constructor() {
+//         super()
+//         this.newAccUser.addEventListener('click', this._newAcount.bind(this));
+//         this.type = 'user';
+
+
+
+//     }
+//     _newAcount(e) {
+//         e.preventDefault();
+//         this._createHtmlPage()
+//         this.newUserName = document.getElementById('user_auten_name');
+//         this.btnAcc = document.querySelector('.btn_form_submit_acc');
+//         this.passwordAcc = document.getElementById('user_password_acc');//New Account Password
+//         this.passwordRepeatAcc = document.getElementById('user_password_repeat');
+//         this.newAreaAcc = document.getElementById('user_zone_acc');
+//         this.userAcc = document.getElementById('user_auten_acc');
+//         this.messageNew = document.querySelector('.messageNewAcc');
+//         this.btnAcc.addEventListener('click', this._submitData.bind(this));
+
+
+//     }
+// }
+
+// class Admin extends NewAcount {
+//     #newAccAdmin
+//     #submitAdminBtn
+//     #bjectAdmin
+//     constructor() {
+//         super()
+
+//         this.btnFormNewUser;
+//         this.btnFormNewAdmin;
+//         this.#submitAdminBtn
+//         this.newAccAdmin = document.getElementById('new_acc_admin')
+//         this.newAccAdmin.addEventListener('click', this._submitAdminData.bind(this))
+//         document.addEventListener('keydown', this._refresh.bind(this))
+//         this.type = 'admin'
+
+
+
+
+//     }
+
+//     _dispayNewAdminForm() {
+
+
+//         document.querySelector('.form_auten').innerHTML = `
+
+//         <form class="form_auten">
+//         <div class="form_row_auten">
+//             <label class="form_label_auten">Utilizator:</label>
+//             <input type="text" id="user_auten" maxlength="30" class="form_input_auten">
+//         </div>
+//         <div class="form_row_auten">
+//             <label class="form_label_auten">Parola:</label>
+//             <input type="password" id="user_password" maxlength="15" class="form_input_auten">
+//         </div>
+//         <div class="form_row_auten">
+//         <input type="submit" class="btn btn_form_submit_admin" value="Trimite">
+
+//       </div>
+
+//         `
+//         this.inputPassword = this.inputUser = ''
+
+
+//     }
+
+
+
+//     _adminAccess(e) {
+//         e.preventDefault()
+//         this.inputUser = document.getElementById('user_auten');
+//         this.inputPassword = document.getElementById('user_password');
+
+
+
+//         const { acc: adminAccName } = user[3]
+//         const { password: adminAccPass } = user[3]
+
+//         if ((this.inputPassword.value === adminAccPass) && (this.inputUser.value === adminAccName)) {
+//             this.message.style.display = "none"
+//             this._htmlNewAccPage()
+
+
+//             document.querySelector('.form_row_change_zone').innerHTML = `<label class="form_label_auten">Tip:</label>
+//            <input type="text"  id="user_zone_acc" placeholder="Administrator" disabled maxlength="15" class="form_input_auten">`
+//             document.querySelector('.change_sub_btn').innerHTML =
+//                 `<input type="submit" class="btn btn_Send_admin" value="Trimite">`
+//             this.btnAcc = document.querySelector('.btn_Send_admin');
+
+//             this.passwordAcc = document.getElementById('user_password_acc');//New Account Password
+//             this.passwordRepeatAcc = document.getElementById('user_password_repeat');
+//             this.newAreaAcc = document.getElementById('user_zone_acc');
+//             this.userAcc = document.getElementById('user_auten_acc');
+//             this.newUserName = document.getElementById('user_auten_name');
+//             this.messageNew = document.querySelector('.messageNewAcc');
+//             this.messageNew.style.display = 'flex';
+
+//             this.btnAcc.addEventListener('click', this._submitData.bind(this))
+
+
+//         }
+//         else {
+
+//             this.message.style.display = "flex"
+//             if (this.inputPassword.value !== adminAccPass) this.message.textContent = 'Parola Este Gresita'
+//             if (this.inputUser.value !== adminAccName) this.message.textContent = 'Contul Introdus Este Gresit'
+
+
+//         }
+
+
+//     }
+//     _submitAdminData(e) {
+//         e.preventDefault()
+//         this._dispayNewAdminForm()
+//         this.#submitAdminBtn = document.querySelector('.btn_form_submit_admin')
+//         this.#submitAdminBtn.addEventListener('click', this._adminAccess.bind(this))
+
+//     }
+
+
+
+// }
+
+
+
+
+
+// class App {
+
+//     //user
+//     #admin
+//     #user
+//     #submitBtn
+//     #inputUserAuten;
+//     #inputPassAuten;
+//     #userObj;
+//     #message;
+//     #autenForm;
+//     #sidebar;
+//     #map;
+//     #accountFind;
+//     #mapEvent;
+//     #userForm;
+//     #formUser;
+//     #userNameForm;
+//     #userDateForm;
+//     #userAreaForm;
+//     #userDurationWork;
+//     #coords;
+//     #icon;
+//     #userTimeWork;
+//     #workContainer;
+//     #idData;
+//     #dateReverse;
+//     #mark;
+
+//     //admin
+//     #adminForm;
+//     #adminName;
+//     #adminTime;
+//     #adminDate;
+//     #adminArea;
+//     #agentSelect;
+//     #userAccByAdm;
+//     #workAdm
+//     #findUserByName;
+//     #enter;
+//     #accMoveRemove;
+
+//     constructor() {
+
+//         //Creearea Conturilor noi
+//         this.#admin = new Admin();
+//         this.#user = new User();
+//         this.#workContainer = document.querySelector('.work_container')
+
+//         //Autentification Form
+//         this.#submitBtn = document.querySelector('.btn_form_submit');
+//         this.#inputUserAuten = document.getElementById('user_auten');
+//         this.#inputPassAuten = document.getElementById('user_password');
+//         this.#message = document.querySelector('.message');
+//         this.#autenForm = document.querySelector('.auten');
+//         this.#sidebar = document.querySelector('.sidebar');
+//         this.#idData;
+//         this.#dateReverse;
+
+//         //ELemente Doom User
+//         this.#userObj = user;
+//         this.#userForm = document.querySelector('.user');//user Ul element
+//         this.#formUser = document.querySelector('.form_user')//Form User
+//         this.#userNameForm = document.getElementById('user_name_user_form');
+//         this.#userDateForm = document.getElementById('form_user_date');
+//         this.#userAreaForm = document.getElementById('user_area');
+//         this.#userDurationWork = document.getElementById('user_work_duration');
+//         this.#userTimeWork = document.getElementById('user_work_time');
+//         this.#icon = document.querySelector('.icon');
+//         this.#mark;
+//         this.#accMoveRemove;
+
+//         //ELemente Doom Admin
+//         this.#adminForm = document.querySelector('.work_form_admin')
+//         this.#adminName = document.getElementById('user_name_admin')
+//         this.#adminTime = document.getElementById('user_time_admin')
+//         this.#adminDate = document.getElementById('form_admin_date')
+//         this.#adminArea = document.getElementById('user_zone_adm')
+//         this.#agentSelect = document.getElementById('form_select_agent')
+//         this.#userAccByAdm;
+//         this.#workAdm = document.querySelectorAll('.work');
+//         this.#findUserByName;
+//         this.#enter = true;
+
+
+
+//         // this._getLocatStorage();
+//         //Constructor Events
+//         this.#submitBtn.addEventListener('click', this._submitData.bind(this))
+//         this.#adminForm.addEventListener('input', this._inputFnAdmin.bind(this))
+
+
+//     }
+
+
+//     //Ascunderea Formularului de Autentificare
+
+//     _inputFnAdmin() {
+//         if (this.#agentSelect.value !== '') {
+//             this.#adminDate.value = this.#adminTime.value = ''
+//         }
+//         else if (this.#adminDate.value !== '') {
+//             this.#agentSelect.value = this.#adminTime.value = ''
+//         }
+//         else if (this.#adminTime.value !== '') {
+//             this.#agentSelect.value = this.#adminDate.value = ''
+//         }
+
+//     }
+//     _hideForm() {
+
+//         setTimeout(() => {
+//             this.#autenForm.classList.add('auten_hidden')
+//             this.#sidebar.classList.remove('sidebar_hidden')
+//         }, 350)
+
+//     }
+
+//     //Autentificarea
+//     _autentification() {
+
+//         this.#message.style.display = 'flex'
+//         //creearea unei functi callBack care gaseste obiectul in fuctie userName si Prola data din obiectul User :)
+//         const accontFinder = user.find(u => {
+//             if (u.acc === this.#inputUserAuten.value && u.password === this.#inputPassAuten.value) {
+//                 this._getLocalStorage();
+
+//                 return u
+
+//             }
+
+//         })
+
+
+//         this.#accountFind = accontFinder
+
+
+
+//         //daca gasim contul===ture/// 
+//         if (this.#accountFind) {
+//             this._hideForm();
+
+//             user.forEach(u => {
+//                 if (u.name === this.#accountFind.name) {
+//                     this.#accountFind.work = u.work;
+//                     if (u.work === undefined) u.work = []
+//                 }
+
+//             }
+//             )
+
+
+//             // this.#accountFind.work = user.work;
+//             this.#accountFind.type === 'user' ? this._displayUser() : this._displayAdmin()
+//             //daca tipul  de cont este 'user' se returneaza functia displayUser() pentru tipul de user 'admin' display_admin()
+
+//         }
+
+//         //daca contul nu poate gasit accountFind===false
+//         if (!this.#accountFind) {
+//             this.#inputUserAuten.value = this.#inputPassAuten.value = ''
+//             this.#message.style.display = 'flex'
+//             this.#message.textContent = 'Datele Nu Exista'
+
+
+//         }
+
+
+
+
+//     }
+//     _submitData(e) {
+//         e.preventDefault()
+//         //Autentificarea Contului 
+//         this._autentification()
+//     }
+
+//     _displayUser() {
+//         if (!this.#accountFind) return
+
+
+//         //1.Luam pozita Utilizatorului ,si randam Harta
+//         this._getPostion(this._displayMapUser);
+//         //2 Randam Harta
+//         this.#icon.addEventListener('click', function () {
+//             this._randerElements()
+//             this._emtyImp();
+//         }.bind(this))
+
+//         document.addEventListener('keydown', function (e) {
+//             if (e.key === 'Enter') {
+
+//                 this._randerElements()
+//                 this._emtyImp();
+
+
+//             }
+//         }.bind(this))
+
+
+//         this.#workContainer.addEventListener('click', this._moveAndRemove.bind(this))
+//         //eliminarea Workului 
+
+//         // this._moveToMarker().bind(this)
+//     }
+//     _displayAdmin() {
+
+//         if (!this.#accountFind) return
+
+//         // this._randerWork(this.#accountFind.name, this.#idData, this.#userDurationWork.value, this.#userTimeWork.value, this.#userDateForm.value)
+
+
+//         //Randarea tutror elemetelor in pagina toate Workurile existente
+//         this._getPostion(this._displayMapAdmin);
+//         this._getLocalStorage()
+
+
+
+//         user.forEach(u => {
+//             if (u.work) {
+
+//                 // if (!u.work) return
+//                 u.work.forEach(wElement => {
+//                     this.#accountFind.work.push(wElement)
+
+
+//                     this._randerWork(u.name, wElement.id, wElement.duration, wElement.time, wElement.date)
+//                     // this.#accountFind.name = 'Ana Moldovan'
+
+//                 })
+
+//             }
+
+
+//         })
+
+//         this.#workContainer.addEventListener('click', this._moveAndRemove.bind(this))
+
+//         // this._moveAndRemove()
+
+//         // this.#workContainer.addEventListener('click', this._moveAndRemove.bind(this))
+//         //ascuderea workurilor
+//         // document.querySelectorAll('.work').forEach(w => w.style.display = 'flex')
+
+
+//         document.addEventListener('keydown', this._keyEvent.bind(this))
+//         this.#icon.addEventListener('click', this._findUser.bind(this))
+
+
+
+
+//     }
+//     _keyEvent(e) {
+
+//         if (e.key === 'Enter') {
+//             this._findUser()
+//             this.#agentSelect.value = this.#adminTime.value = this.#adminDate.value = ''
+//             // this.#workContainer.style.display = 'none'
+
+
+
+//         }
+
+//     }
+
+//     _findUser() {
+
+//         let workElement;
+
+//         const worksEl = document.querySelectorAll('.work')
+//         worksEl.forEach(w => w.style.display = 'none')
+//         // this.#workContainer.removeEventListener('click', this._moveAndRemove.bind(this))
+//         this.#findUserByName = user.find(u => u.name === this.#agentSelect.value)
+//         const findUserByTime = [];
+//         const findUserByDate = [];
+//         const idLength = function () {
+
+//             worksEl.forEach(el => { if (el.dataset.id.includes(workElement.id)) { el.style.display = 'flex' } })
+//         }
+
+
+//         user.forEach(u => {
+//             if (u.work) {
+//                 findUserByTime.push(...u.work.filter(w => {
+//                     if (w.time === this.#adminTime.value) return u
+//                 }))
+//                 findUserByDate.push(...u.work.filter(w => {
+//                     if (w.date === this.#adminDate.value) return u
+//                 }))
+//             }
+
+//         })
+
+
+//         this.#adminDate.value
+
+
+
+//         //daca Admin tasteaza numele utilizatorlui elementele Display care apartin utlizatorului sunt vizibile in pagina 
+
+
+//         this.#findUserByName?.work.forEach(w => {
+//             workElement = w
+//             // worksEl.forEach(el => { if (el.dataset.id.includes(workElement.id)) { el.style.display = 'flex' } })
+//             idLength()
+//         })
+
+//         //daca admin tasteaza all sau toti toate elemetele sunt vizibile
+//         worksEl?.forEach(el => { if (this.#agentSelect.value === 'all' || this.#agentSelect.value === 'toti') el.style.display = 'flex' })
+
+
+
+//         findUserByTime?.forEach(w => {
+//             workElement = w
+//             idLength()
+//         })
+
+
+
+
+//         findUserByDate?.forEach(w => {
+//             workElement = w;
+//             idLength()
+//         })
+
+//         // this.#adminDate.value = this.#adminTime.value = this.#agentSelect = ""
+//     };
+
+
+
+
+
+
+//     _getPostion(type) {
+//         //folosind geolocation Api luam cordonatele ultizatorului cand se randeza harta
+//         navigator.geolocation?.getCurrentPosition(type.bind(this), err => alert(err.message))
+//     }
+
+//     _displayMapUser(position) {
+
+//         this._getMap(position, this._showFormUser.bind(this), this._removeFormUser.bind(this))
+//         if (this.#accountFind.work) {
+//             //daca exista acountFind.work un work creat ulterior dupa eventul de Enter dupa completare Formului,
+//             // workul este implemetat in obiectu user sub forma de array
+
+//             //cand Harta se Incarca Elemetele Html 'work' se randeaza din Local Storage
+//             const work = this.#accountFind.work
+//             work.forEach(w => {
+//                 this._randerMarker(w.latitude, w.longitude)//radam markerul pentru fiecare work in parte 
+//                 this._randerWork(this.#accountFind.name, w.id, w.duration, w.time, w.date)//randarea workului sub forma de element in pagina pentru fiecare [work]
+//             })
+//         }
+//     }
+
+//     _displayMapAdmin(position) {
+
+//         this._getMap(position, this._showFormAdmin.bind(this), this._removeFormAdim.bind(this));
+
+
+
+//     }
+
+
+
+//     _getMap(position, showForm, removeForm) {
+
+//         const { latitude, longitude } = position.coords
+//         this.#coords = [latitude, longitude]
+//         //Randarea Harti folosind documentatia Leflet 
+//         this.#map = L.map('map').setView(this.#coords, 14);
+//         L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+
+//             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+//         }).addTo(this.#map);
+//         //Event click Harta 'click'===randarea Formului
+//         this.#map.on('click', showForm)
+//         this.#map.on('dblclick', removeForm)
+//     }
+
+
+//     _showFormUser(mapE) {
+
+//         this.#mapEvent = mapE;
+//         this.#userForm.classList.add('user_show_form');
+
+//         //MapE va lua efectiv cordonatele cand dam click pe harta
+
+//         // document.querySelector('.admin').classList.remove('admin_hidden')
+//         this._emtyImp()
+
+//         this.#userNameForm.value = this.#accountFind.name;//User name va fi idenitc cu user Name din obiectul User 
+//         this.#accountFind?.area ? this.#userAreaForm.value = this.#accountFind.area
+//             : this.#userAreaForm.value = "Nedefinit";
+//         //Este posibil ca Area sa nu fie defnita nefiind obligatorie 
+
+//         let userTime = this.#userTimeWork;
+//         userTime.focus();
+//         //focalizare pe Timp
+
+
+
+//     }
+
+//     _showFormAdmin(mapE) {
+//         this.#mapEvent = mapE;
+//         this.#adminForm.classList.remove('admin_hidden')
+//         this._emtyImpAdmin();
+//         this.#accountFind;
+//         this.#adminName.value = this.#accountFind.name;
+
+
+
+
+
+
+
+
+//     }
+
+//     _removeFormUser() {
+//         this.#userForm.classList.remove('user_show_form');
+//     }
+
+//     _removeFormAdim() {
+//         this.#adminForm.classList.add('admin_hidden')
+//     }
+
+
+//     //Mici functi ajutoare pentru Validare Inputurilor
+
+//     _finiteInp(input) {
+//         return isFinite(input)
+//     }
+//     _pozitiveInput(inp) {
+//         if (inp > 0) return inp
+//     }
+//     _emtyImp() {
+//         this.#userDateForm.value = this.#userTimeWork.value = this.#userDurationWork.value = '';
+//     }
+
+//     _emtyImpAdmin() {
+//         this.#adminDate.value = this.#adminTime.value = this.#agentSelect.value = ''
+//     }
+
+//     _randerElements() {
+
+//         if (this.#userForm.classList.contains('user_show_form')) {
+//             // if (!this.#userDateForm.value || !this.#userTimeWork.value || !this.#userDurationWork.value) return alert('Campurile sunt Obligatorii')
+//             if
+//                 ((this.#userDateForm.value && this.#userTimeWork.value && this.#userDurationWork.value)
+//                 && (this._finiteInp(this.#userDurationWork.value)) && (this._pozitiveInput(this.#userDurationWork.value))) {
+//                 //doar daca valorile specificate exista si daca durata este trasformata in Nr Finit si daca durata este un input pozitv 
+
+
+//                 if (this.#userDurationWork.value > 700) return this.#userDurationWork.value = 0
+//                 //O durata maxima de lucru pe o singura strada de 160 de minute
+
+//                 // this.#userForm.classList.remove('user_show_form');
+//                 const { lat, lng } = this.#mapEvent.latlng;//destrucurarea latitudini si logitudini 
+
+
+//                 this._randerMarker(lat, lng);//randarea Markerului
+//                 this.#idData = Date.now()//crearea unui id unic
+
+//                 //randarea unui work in pagina ,folosim o functie cu multe Argumete :( 
+
+
+
+//                 this._randerWork(this.#accountFind.name, this.#idData, this.#userDurationWork.value, this.#userTimeWork.value, this.#userDateForm.value)
+//                 //adaugarea unui  work [{}] in obiectul User pe pozitia utilizatorului Logat
+//                 //work este creat by default [] pentru fiecare user in parte
+//                 user.forEach(u => {
+//                     if (u.name === this.#accountFind.name) {
+//                         u.work.push({
+//                             id: this.#idData, time: this.#userTimeWork.value, latitude: lat, longitude: lng,
+//                             date: this.#userDateForm.value, duration: this.#userDurationWork.value
+//                         })
+
+//                     }
+
+
+//                 })
+
+
+//                 //setarea StorgeLocal
+//                 this._setLocalStorage()
+
+//             }
+//             else {
+//                 alert('Campurile sunt Obligatorii');
+//             }
+//         }
+
+
+//     }
+
+
+//     //Inversarea Datei folosind o functie ajutatoare
+
+//     _reverseDate(date) {
+//         return date = date.split("-").reverse().join('.')
+
+//     }
+
+//     _moveAndRemove(e) {
+//         e.preventDefault()
+//         const workElement = e.target.closest('.work')
+//         //gasirea targetului dupa eventul de click 
+//         this.#accMoveRemove = this.#accountFind;
+//         const target = e.target;
+
+//         // const title = target.document.querySelector('.work_title')
+
+
+
+
+
+
+//         if (!workElement) return;
+
+//         //id creat folosind dataset in elemente html randate
+//         const idHtml = +workElement.dataset.id
+
+
+//         const work = this.#accMoveRemove.work
+
+//         //gasirea workului daca id-ul este identic ID randat===ID Tragetului
+
+//         const findWork = work.find(w => w.id === idHtml)
+
+//         const { latitude: lat, longitude: lng } = findWork;
+//         //lat/lng workului gasit 
+//         //folosirea Lefletului pentru a crea o animatie care sa ne duca la markerul dorit 
+
+//         setTimeout(() => {
+//             this.#map.setView([lat, lng], 16.5, {
+//                 animate: true,
+//                 pan: {
+//                     duration: 1.4
+//                 }
+//             });
+//         }, 500)
+
+//         L.marker([lat, lng]).addTo(this.#map)
+
+
+
+//         const latlng = L.latLng(lat, lng);
+
+//         //crearea uni popup  dupa ce dam click pe work 
+//         this.#dateReverse = this._reverseDate(findWork.date);
+
+
+//         L.popup()
+//             .setLatLng(latlng)
+//             .setContent(`<p class="popup_dis">Distribuire ${workElement.childNodes[1].textContent}<br>
+//             In data de ${this.#dateReverse}</p>`)
+//             .openOn(this.#map);
+
+
+//         //Stergerea Workului dupa X event     
+
+//         const workRemove = e.target.closest('.w_remove')
+
+//         if (workRemove) {
+
+
+//             setTimeout(() => { workElement.style.display = 'none' }, 250)
+
+//             work.forEach(w => {
+//                 if (w === findWork) {
+//                     this._removeItemOnce(work, findWork)
+
+//                 }
+//             })
+
+//             this.#map.closePopup();
+
+//             this._setLocalStorage()
+
+
+//         }
+
+//     }
+
+//     //randarea Markerului
+//     _randerMarker(lati, lngi) {
+//         this.#mark = new L.marker([lati, lngi])
+//         return this.#map.addLayer(this.#mark);
+
+
+
+//     }
+
+
+//     //randarea workului in pagina
+//     _randerWork(name, id, duration, time, date) {
+
+//         this.#dateReverse = this._reverseDate(date);
+
+
+//         const html = `
+           
+//          <li class="work" data-id="${id}">
+//         <h2 class="work_title"> ${name} </h2>
+//         <div class="work_details">
+//             <span class="work_icon">⏱</span>
+//             <span class="work_value">${duration}min</span>
+//         </div>
+//         <div class="work_details">
+//             <span class="work_icon">⌚</span>
+//             <span class="work_value">${time}</span>
+//         </div>
+//         <div class="work_details">
+//             <span class="work_icon">📅</span>
+//             <span class="work_value">${this.#dateReverse}</span>
+//         </div>
+//         <h2 class="w_remove">❎ </h2>
+      
+
+//     </li> 
+//         `
+
+//         this.#workContainer.insertAdjacentHTML('afterbegin', html)
+
+
+
+//     }
+
+//     //Mutarea La marker dupa un click pe ficare work din pagina
+
+//     _removeItemOnce(arr, value) {
+//         let index = arr.indexOf(value);
+//         if (index > -1) {
+//             arr.splice(index, 1);
+//         }
+//         return arr;
+//     }
+
+//     // setarea local storage
+//     _setLocalStorage() {
+//         localStorage.setItem('user', JSON.stringify(user))
+
+
+//     }
+
+//     //folosim stringul creat de functia anterioara si creem o alta functie care folostete stringul si il trasforma in obiect
+
+//     _getLocalStorage() {
+//         const data = localStorage.getItem('user')
+//         const dataObj = JSON.parse(data)
+//         user = dataObj
+//     }
+//     //resetarea Local Storage
+//     restoreLocalStorage() {
+//         localStorage.removeItem('user')
+//     }
+
+// }
+

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MailMap</title>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
+        integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin="" />
+    <script defer src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+        integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
+    <script defer type="module" src="index.js"></script>
+</head>
+
+<body>
+
+
+    <div class="sidebar sidebar_hidden">
+
+        <div class="logo">
+            <img src="img/icon.jpg" alt="Logo" class="icon" width="50px" /><label id="logo_txt" class='logo_name'>&nbsp;
+                &nbsp;</label>
+
+
+        </div>
+
+
+        <ul class="work_form user">
+            <form class="form_user">
+                <div class="form_row">
+                    <label class="form_label">Nume:
+                        <input type="text" class="form_input" id="user_name_user_form" disabled>
+                    </label>
+                </div>
+
+                <div class="form_row">
+                    <label class="form_label">Data:</label>
+                    <input type="time" id="user_work_time" class="form_input form_input_time">
+                    <input type="date" id="form_user_date" class="form_input form_input_date form_input_time">
+                    <br>
+                </div>
+
+                <div class="form_row">
+                    <label class="form_label">Zona:
+                        <input type="text" class="form_input" id="user_area" disabled>
+                    </label>
+                </div>
+
+                <div class="form_row">
+                    <label class="form_label">Durata:</label>
+                    <input type="text" id="user_work_duration" class="form_input form_input_duration" maxlength="3"
+                        placeholder="ora">
+                </div>
+
+            </form>
+        </ul>
+
+        <ul class="form work_form work_form_admin admin_hidden">
+            <form class="form_admin">
+                <div class="form_row">
+                    <label class="form_label">Nume:
+                        <input type="text" class="form_input admin_input" id="user_name_admin" class="admin_name"
+                            value="Ana Moldovan" disabled>
+                    </label>
+
+                </div>
+                <div class="form_row">
+                    <label class="form_label">Data:</label>
+                    <input type="time" id="user_time_admin" class="form_input admin_input  form_input_time">
+                    <input type="date" id="form_admin_date"
+                        class="form_input admin_input  form_input_date form_input_time">
+                    <br>
+                </div>
+                <div class="form_row">
+                    <label class="form_label">Cont:
+                        <input type="text" class="form_input admin_input" id="user_zone_adm" placeholder="Admin"
+                            disabled>
+                    </label>
+                </div>
+                <div class="form_row">
+                    <label class="form_label">Agent:</label><br>
+                    <input type="text" id="form_select_agent" class="form_input admin_input  form_input_agent"
+                        placeholder="Nume Agent">
+
+                </div>
+
+            </form>
+        </ul>
+        <br> <br> <br>
+
+        <div class="work_container ">
+            <!-- <li class="work" data-id="123456
+            ">
+                <h2 class="work_title"> Oprea Razvan </h2>
+                <div class="work_details">
+                    <span class="work_icon">⏱</span>
+                    <span class="work_value">30min</span>
+                </div>
+                <div class="work_details">
+                    <span class="work_icon">⌚</span>
+                    <span class="work_value">8:30</span>
+                </div>
+                <div class="work_details">
+                    <span class="work_icon">📅</span>
+                    <span class="work_value">20.12.2022</span>
+                </div> -->
+
+
+            </li>
+        </div>
+
+
+    </div>
+    </div>
+    </div>
+    <ul class="auten">
+        <form class="form_auten">
+            <div class="form_row_auten">
+                <label class="form_label_auten new_label">Utilizator:</label>
+                <input type="text" id="user_auten" maxlength="30" class="form_input_auten">
+            </div>
+            <div class="form_row_auten">
+                <label class="form_label_auten new_label">Parola:</label>
+                <input type="password" id="user_password" maxlength="15" class="form_input_auten">
+            </div>
+            <div class="form_row_auten">
+                <input type="submit" class="btn btn_form_submit" value="Trimite">
+                <input type="submit" class="btn btn_form_new_user" value="Cont Nou User" id="new_acc_user"></button>
+                <input type="submit" class="btn btn_form_new_admin" value="Cont Nou Admin" id="new_acc_admin"></button>
+                <input type="submit" class="btn btn_form_new_admin" value="Parola Noua" id="new_pasword_acc"></button>
+            </div>
+            <div class="form_row_auten">
+                <p class="message"></p>
+
+            </div>
+
+        </form>
+    </ul>
+
+
+
+
+
+    <div id="map"></div>
+</body>
+
+</html>

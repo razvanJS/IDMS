@@ -1,0 +1,33 @@
+[
+    {
+        "name": "Pop Andrei",
+        "acc": "andreiPop2023",
+        "password": "pop2023",
+        "area": "Zorilor",
+        "type": "user",
+        "work": []
+    },
+    {
+        "name": "Popescu Bogdan",
+        "acc": "bogdan1985",
+        "password": "popescu2023",
+        "area": "Mansatur",
+        "type": "user",
+        "work": []
+    },
+    {
+        "name": "Andrei Leonte",
+        "acc": "andreileo2012",
+        "password": "leoanrei2022",
+        "area": "Gruia",
+        "type": "user",
+        "work": []
+    },
+    {
+        "name": "Pop Mihai",
+        "acc": "bogdanMihai2023",
+        "password": "ian2023",
+        "type": "admin",
+        "work": []
+    }
+]

@@ -3,7 +3,7 @@ import { getData, u } from "./data.js";
 await getData()
 let user = u
 let userCopy = Object.assign([], user)
-6
+
 
 class NewAcount {
     #userObject
